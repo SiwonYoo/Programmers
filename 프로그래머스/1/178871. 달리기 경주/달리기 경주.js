@@ -5,8 +5,6 @@ function solution(players, callings) {
     return players;
 }
 
-
-
 function switchPlayers(callingPlayer, players, playersMap) {
     const callingIdx = playersMap.get(callingPlayer);
     const frontPlayer = players[callingIdx - 1];
