@@ -11,7 +11,7 @@ function solution(today, terms, privacies) {
         let endMM = startMM + termsMap.get(term);
         let endYYYY = startYYYY;
         if (endMM > 12) {
-            endYYYY = startYYYY + Math.floor((endMM-1) / 12);
+            endYYYY = startYYYY + Math.floor(endMM % 12 ? endMM / 12 : endMM / 12 - 1);
             endMM = endMM % 12 || 12;
         }
         let endDD = startDD - 1;
