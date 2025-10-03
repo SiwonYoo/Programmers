@@ -14,19 +14,11 @@ function solution(today, terms, privacies) {
             endYYYY = startYYYY + Math.floor(endMM % 12 ? endMM / 12 : endMM / 12 - 1);
             endMM = endMM % 12 || 12;
         }
-        let endDD = startDD - 1;
-        if (!endDD) {
-            endDD = 28;
-            endMM--;
-            if (!endMM) {
-                endMM = 12;
-                endYYYY--;
-            }
-        }
+        let endDD = startDD;
         
         if (todayYYYY < endYYYY) return -1;
         if (todayYYYY === endYYYY && todayMM < endMM) return -1;
-        if (todayYYYY === endYYYY && todayMM === endMM && todayDD <= endDD) return -1;
+        if (todayYYYY === endYYYY && todayMM === endMM && todayDD < endDD) return -1;
         
         return idx+1;
     });
