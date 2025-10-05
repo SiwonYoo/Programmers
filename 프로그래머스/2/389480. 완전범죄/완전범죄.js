@@ -16,22 +16,21 @@ function solution(info, n, m) {
         let jSum = 0;
         for (let j=0; j<=arr[1].length; j++) {
             if (i * 3 + j * 2 >= m) break;
-            jSum+= arr[1][j-1] || 0;
+            jSum += arr[1][j-1] || 0;
             
             let kSum = 0;
             for (let k=0; k<=arr[0].length; k++) {
                 if (i * 3 + j * 2 + k >= m) break;  
-                kSum+= arr[0][k-1] || 0;
+                kSum += arr[0][k-1] || 0;
             }
+            
             answer.push(iSum + jSum + kSum);
         }
     }
 
-    console.log(answer);
     
     let Asum = 0;
     info.forEach(item => Asum += item[0]);
-    console.log(Asum);
     
     if (Asum - Math.max(...answer) < n) return (Asum - Math.max(...answer));
     
