@@ -1,20 +1,30 @@
+// 이전 풀이에서 개선된 점
+// - 명예의 전당은 최대 k개만 유지
+// - 현재 최솟값보다 의미 있는 점수만 반영
+// - 불필요한 전체 정렬/삭제 최소화
+
 function solution(k, score) {
-    // 명예의 전당(k위까지) 중 가장 작은 값 배열
-    var answer = [];
+    // 매일 발표되는 명예의 전당 최솟값을 저장할 배열
+    let answer = [];
     
-    // 명예의 전당(hall of fame): 모든 점수를 내림차순으로 넣을 배열 선언
+    // 명예의 전당(hall of fame) - 오름차순 유지
     const hof = [];
     
-    for (let i of score) {
-        // 매일 가수 점수 추가
-        hof.push(i);
-        // 내림차순 정렬
-        hof.sort((a, b) => b - a);
-        
-        // hof의 크기가 k보다 작으면 hof의 가장 마지막 값을 answer 배열에 넣음
-        if (hof.length < k) answer.push(hof[hof.length - 1])
-        // hof의 크기가 k보다 같거나 크면 hof의 k번째 값을 answer 배열에 넣음
-        else answer.push(hof[k - 1]);
+    for (let s of score) {
+        // 1. 명예의 전당이 k명을 넘지 않으면, 새로운 점수 추가한 뒤 오름차순 정렬
+        if (hof.length < k) {
+            hof.push(s);
+            hof.sort((a, b) => a - b);
+        }
+        // 2. 명예의 전당이 이미 k명이면, 현재 최솟값을 새로운 점수로 교체한 뒤 오름차순 정렬
+        else if (hof[0] < s) {
+            hof[0] = s;
+            hof.sort((a, b) => a - b);
+        }
+        // 3. 새로운 점수가 현재 최솟값보다 작거나 같으면, 어떠한 처리도 하지 않고 유지
+
+        // answer에 현재 명예의 전당의 최솟값 추가
+        answer.push(hof[0])
     }
     
     return answer;
