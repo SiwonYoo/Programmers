@@ -2,10 +2,12 @@
 // 1. join으로 합친 후, includes로 포함 여부 확인 -> replace로 제거 반복
     // 시간초과
 // 2. stack에 하나씩 넣고 (ingredient[currentIndex] === stack[latestItem] % 3 + 1)로 비교
-    // 성공
+    // 성공 (메모리: 65.8 MB, 시간: 138.67 ms)
 // 3. 보완: 기존 비교 방법은 이 문제에 과하게 의존적임
     // 스택의 마지막 값 기준으로 비교하도록 수정
     // pop 3번 반복 대신 stack.length -= 4; 으로 stack에서 값 제거
+    // 성능은 2보다 안좋아졌지만, 문제에 대한 의존을 줄이고 로직을 단순화시킴
+    // 메모리: 96.7 MB, 시간: 222.81 ms
 
 function solution(ingredient) {
     var answer = 0;
