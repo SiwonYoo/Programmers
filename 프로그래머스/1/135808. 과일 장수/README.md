@@ -1,10 +1,10 @@
 # [level 1] 과일 장수 - 135808 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/135808) | **[⭐️문제 풀이⭐️](./과일 장수.js)**
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/135808) 
 
 ### 성능 요약
 
-메모리: 94.9 MB, 시간: 302.45 ms
+메모리: 83.5 MB, 시간: 241.38 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2026년 01월 06일 20:41:15
+2026년 01월 13일 15:54:32
 
 ### 문제 설명
 
