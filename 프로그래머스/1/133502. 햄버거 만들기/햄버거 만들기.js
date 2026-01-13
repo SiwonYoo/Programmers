@@ -1,32 +1,48 @@
 function solution(ingredient) {
     var answer = 0;
     
-    let stack = [];
+    const stack = [];
     
-    ingredient.forEach((item, idx, arr) => {
-        if (item === 1 && isReady(arr, idx, stack[stack.length - 1])) {
-            makeBurger(stack);
-            answer++;
+//     ingredient.forEach((item, idx, arr) => {
+//         if (isReady(arr, idx)) {
+//             if (item === 3) {
+//                 stack.pop();
+//                 stack.pop();
+//                 stack.pop();
+//             } else {
+//                 stack.push(idx);
+                
+//             }
+//         }
+//     })
+    
+    let idx = 0;
+    
+    while (ingredient) {
+        const item = ingredient[idx];
+        
+        if (isReady(ingredient, idx)) {
+            if (item === 3) {
+                stack.pop();
+                stack.pop();
+                stack.pop();
+                ingredient.splice(idx-3, 4)
+                idx = stack.pop();
+                answer++;
+                continue;
+            } else {
+                stack.push(idx);
+            }
         }
         
-        else if (item === 1 || isReady(arr, idx, stack[stack.length - 1])) {
-            stack.push(item);
-        } else {
-            stack = [];
-        }
-    })
+        idx++;
+    }
     
     return answer;
 }
 
-function isReady(arr, idx, latestItem) {
-    if (arr[idx] === latestItem % 3 + 1) return true;
+function isReady(arr, idx) {
+    if (arr[idx + 1] === 1) return true;
+    if (arr[idx + 1] === arr[idx] % 3 + 1) return true;
     return false;
-}
-
-function makeBurger(arr) {
-    arr.pop();
-    arr.pop();
-    arr.pop();
-
 }
